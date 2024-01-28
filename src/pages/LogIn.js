@@ -38,8 +38,8 @@ const LogIn = ({ setProgress }) => {
 
     return (
         <div className='auth' ref={parent}>
-            <div className='logo'>
-                <img src={process.env.PUBLIC_URL + `logo-white.png`} alt='company logo' />
+            <div className='i-logo'>
+                <img src={window.location.origin + `/logo-white.png`} alt='company logo' />
             </div>
             <div className='header'>
                 Log In
