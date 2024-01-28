@@ -1,38 +1,202 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
+
+#root{
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Merriweather', serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container{
+    padding: 0px;
+    margin: 0px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.top-menu-bar{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: calc(100vw - 65px);
+    margin: 0px;
+    background-color: #fff;
+    padding: 5px 20px;
+    display:  flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.main-container{
+    margin-top: 13vh;
 }
 
-.App-link {
-  color: #61dafb;
+.logo{
+    margin: 10px 5px;
+    width: 200px;
+    margin-right: 100px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logo img {
+    width: 200px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px;
+    margin-left: 100px;
+}
+
+.profile a {
+    text-decoration: none;
+    color: #000 !important;
+    font-size: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.profile a:hover {
+    font-size: 18px;
+}
+
+.profile .menu {
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 30px;
+    text-align: center;
+    padding: 8px 12px;
+    margin: 5px;
+}
+
+.profile .menu-invert{
+    background-image: linear-gradient(to right, #acacac, #000);
+    color: #fff !important;
+    border: 1px solid linear-gradient(to right, #acacac, #000);
+    border-radius: 30px;
+    text-align: center;
+    padding: 8px 12px;
+    margin: 5px;
+}
+
+
+.menu-items{
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space-evenly;
+}
+
+.menu-items a {
+    text-decoration: none;
+    font-size: 25px;
+    padding: 10px 0px;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-items a:hover{
+    font-size: 30px;
+}
+
+.menu-items a svg path{
+    fill: #000;
+}
+
+.auth {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: auto;
+    width: 350px;
+}
+
+.auth .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.auth .inputs input{
+    flex: 1;
+    padding: 5px 15px;
+    margin: 5px 8px;
+    font-size: 18px;
+    border: 1px solid #acacac;
+    border-radius: 20px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+.auth .inputs input:focus {
+    border: 1px solid linear-gradient(to right, #acacac, #000);
+}
+
+.auth .logo {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+.auth .logo img{
+    width: 100px;
+}
+
+.auth .header{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.auth .buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
+
+.auth .buttons button {
+    background-image: linear-gradient(to right, #acacac, #000);
+    color: #fff !important;
+    border: 1px solid #fff;
+    border-radius: 30px;
+    text-align: center;
+    padding: 8px 12px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.error{
+    flex: 1;
+    width: 100%;
+    color: red;
+    text-align: center;
+}
+
+.opacity-80 {
+    opacity: 80%;
+}
+
+.animate-spin{
+    animation-name: spin;
+    animation-duration: 800ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+@keyframes skeleton{
+    0% {
+        left: 0%;
+    }
+    100% {
+        left: 100%;
+    }
 }
