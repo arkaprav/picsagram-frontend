@@ -29,7 +29,7 @@ const LogIn = ({ setProgress }) => {
             setCookie("picsaJWT", res.jwt, 7);
             setCookie("picsaProfilePic", res.profilePic, 7);
             setCookie("picsaUsername", res.username, 7);
-            navigate("/");
+            navigate("/profile");
         }).catch((err) => {
             setError(err.data.message);
             setProgress(100);

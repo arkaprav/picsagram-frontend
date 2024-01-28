@@ -6,6 +6,7 @@ import { useState } from 'react';
 import MenuBar from './components/MenuBar';
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
+import Profile from './pages/Profile';
 
 function App() {
   const [progress, setProgress] = useState(0);
@@ -24,6 +25,7 @@ function App() {
           <Route path='message' element={<div>Message...</div>} />
           <Route path='login' element={<LogIn setProgress={setProgress} />} />
           <Route path='signup' element={<SignUp setProgress={setProgress} />} />
+          <Route path='profile' element={<Profile />} />
         </Route>
       </CustomeRoutes>
     </>

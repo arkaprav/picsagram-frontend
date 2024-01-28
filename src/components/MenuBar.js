@@ -42,18 +42,20 @@ const MenuBar = ({ setProgress }) => {
                 </div>
                 {jwt ? (
                     <div className='profile'>
-                        <div className='user'>
-                            {
-                                profilePic !== "" ? (
-                                    <div className='logo'>
-                                        <img src={profilePic} alt='company-log' />
-                                    </div>
-                                ) : (
-                                    <div className='user-logo'>{username[0]}</div>
-                                )
-                            }
-                            <div className='name'>{username}</div>
-                        </div>
+                        <NavLink to="/profile">
+                            <div className='user'>
+                                {
+                                    profilePic !== "" ? (
+                                        <div className='logo'>
+                                            <img src={profilePic} alt='company-log' />
+                                        </div>
+                                    ) : (
+                                        <div className='user-logo'>{username[0]}</div>
+                                    )
+                                }
+                                <div className='name'>{username}</div>
+                            </div>
+                        </NavLink>
                         <div className='menu-invert' onClick={() => { delCookie("picsaJWT"); navigate("/login"); }}>
                             Log Out
                         </div>
