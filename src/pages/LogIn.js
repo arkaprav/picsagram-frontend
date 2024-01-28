@@ -3,6 +3,7 @@ import Button from '../components/Button'
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { useLoginMutation } from '../store';
 import { useNavigate } from 'react-router-dom';
+import { setCookie } from '../helpers/cookies';
 
 const LogIn = ({ setProgress }) => {
     const [parent, enable] = useAutoAnimate({ duration: 350 });
@@ -25,6 +26,9 @@ const LogIn = ({ setProgress }) => {
         setProgress(50);
         await loginUser(data).unwrap().then((res) => {
             setProgress(100);
+            setCookie("picsaJWT", res.jwt, 7);
+            setCookie("picsaProfilePic", res.profilePic, 7);
+            setCookie("picsaUsername", res.username, 7);
             navigate("/");
         }).catch((err) => {
             setError(err.data.message);
