@@ -4,7 +4,7 @@ import { axiosBaseQuery } from "../customeBaseQuery/axiosBaseQuery";
 const UsersAuthApi = createApi({
     reducerPath: "UsersAuth",
     baseQuery: axiosBaseQuery({
-        baseUrl: "https://picsa-gram-backend.vercel.app//api/users/auth",
+        baseUrl: "https://picsa-gram-backend.vercel.app/api/users/auth",
     }),
     endpoints(builders){
         return {
