@@ -20,7 +20,7 @@ const MenuBar = ({ setProgress }) => {
     }, [parent, enable]);
     return (
         <div className='container' ref={parent}>
-            <div className='main-container'>
+            <div className='main-container' ref={parent}>
                 <Outlet />
             </div>
             <div className='top-menu-bar'>

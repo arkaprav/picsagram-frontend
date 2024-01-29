@@ -15,6 +15,10 @@ const Profile = () => {
         content = <div className='skeleton'>
             <div className='profilePic' />
             <div className='name' />
+            <div className='userd'>
+                <div className='email' />
+                <div className='phone' />
+            </div>
             <div className='details'>
                 <div className='cont' />
                 <div className='cont' />
