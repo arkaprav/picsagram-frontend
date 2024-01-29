@@ -86,6 +86,7 @@
     text-align: center;
     padding: 8px 12px;
     margin: auto;
+    cursor: pointer;
 }
 
 .profile .menu-invert{
@@ -97,6 +98,7 @@
     padding: 8px 12px;
     max-height: 30px;
     margin: auto;
+    cursor: pointer;
 }
 
 
@@ -116,7 +118,7 @@
     transition: all 0.3s ease-in-out;
 }
 
-.menu-items a:hover{
+.menu-items:hover{
     font-size: 30px;
 }
 
@@ -291,8 +293,8 @@
 }
 
 .skeleton .details .cont {
-    width: 80px;
-    height: 50px;
+    width: 100px;
+    height: 25px;
     background-color: #c0c0c0;
     border-radius: 8px;
 }
@@ -342,13 +344,13 @@
     gap: 20px;
 }
 
-.profile-page .posts{
+.posts{
     display: flex;
     flex-direction: row;
     gap: 30px;
 }
 
-.profile-page .posts div {
+.posts div {
     font-size: 22px;
 }
 
@@ -370,4 +372,34 @@
     height: 20px;
     background-color: #c0c0c0;
     border-radius: 8px;
+}
+
+.profile-page .buttons , .skeleton .buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.profile-page .buttons div {
+    padding: 8px 12px;
+    font-size: 15px;
+    background-image: linear-gradient(to right, #acacac, #000);
+    border-radius: 20px;
+    color: white;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
+.skeleton .buttons div{
+    width: 120px;
+    height: 35px;
+    background-color: #c0c0c0;
+    border-radius: 20px;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
 }

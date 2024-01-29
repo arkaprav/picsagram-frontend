@@ -7,6 +7,8 @@ import MenuBar from './components/MenuBar';
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import Profile from './pages/Profile';
+import CreatePost from './pages/CreatePost';
+import EditProfile from './pages/EditProfile';
 
 function App() {
   const [progress, setProgress] = useState(0);
@@ -26,6 +28,8 @@ function App() {
           <Route path='login' element={<LogIn setProgress={setProgress} />} />
           <Route path='signup' element={<SignUp setProgress={setProgress} />} />
           <Route path='profile' element={<Profile />} />
+          <Route path='create-post' element={<CreatePost setProgress={setProgress} />} />
+          <Route path='edit-profile' element={<EditProfile setProgress={setProgress} /> } />
         </Route>
       </CustomeRoutes>
     </>

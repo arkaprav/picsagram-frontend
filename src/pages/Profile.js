@@ -1,7 +1,7 @@
 import React from 'react'
 import { useGetCurrentUserQuery } from '../store';
 import { getCookie } from '../helpers/cookies';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const Profile = () => {
     const jwt = getCookie("picsaJWT");
@@ -24,13 +24,25 @@ const Profile = () => {
                 <div className='cont' />
                 <div className='cont' />
             </div>
+            <div className='buttons'>
+                <div />
+                <div />
+            </div>
+            <div className='posts'>
+                <div>Posts</div>
+                <div>Saved</div>
+            </div>
         </div>;
     }
     else {
         content = <div className='profile-page'>
-            <div className='profilePic'>
-                {user.username[0]}
-            </div>
+            { user.profilePic === "" ? (
+                <div className='profilePic'>
+                    {user.username[0]}
+                </div>
+            ) : (
+                <div />
+            )}
             <div className='name'>{user.username}</div>
             <div className='details'>
                 <div className='email'>
@@ -44,6 +56,18 @@ const Profile = () => {
                 <div>{JSON.parse(user.follower).length} followers</div>
                 <div>{JSON.parse(user.following).length} following</div>
                 <div>{JSON.parse(user.no_of_posts).length} posts</div>
+            </div>
+            <div className='buttons'>
+                <NavLink to='/edit-profile'>
+                    <div className='edit'>
+                        Edit Profile
+                    </div>
+                </NavLink>
+                <NavLink to='/create-post'>
+                    <div className='create'>
+                        + Create Post
+                    </div>
+                </NavLink>
             </div>
             <div className='posts'>
                 <div>Posts</div>
