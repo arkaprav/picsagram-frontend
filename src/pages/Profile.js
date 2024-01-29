@@ -23,7 +23,6 @@ const Profile = () => {
         </div>;
     }
     else {
-        console.log(user)
         content = <div className='profile-page'>
             <div className='profilePic'>
                 {user.username[0]}
@@ -38,9 +37,9 @@ const Profile = () => {
                 </div>
             </div>
             <div className='follow'>
-                <div>{user.follower} followers</div>
-                <div>{user.following} following</div>
-                <div>{user.no_of_posts} posts</div>
+                <div>{JSON.parse(user.follower).length} followers</div>
+                <div>{JSON.parse(user.following).length} following</div>
+                <div>{JSON.parse(user.no_of_posts).length} posts</div>
             </div>
             <div className='posts'>
                 <div>Posts</div>

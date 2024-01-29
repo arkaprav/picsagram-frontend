@@ -246,3 +246,108 @@
         left: 100%;
     }
 }
+
+.skeleton {
+    width: 500px;
+    margin: 30px auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+    &::before {
+        content: '';
+        position: absolute;
+        width: 1%;
+        height: 100%;
+        background-image: linear-gradient(90deg, rgb(230, 230, 230), rgb(230, 230, 230), rgb(230, 230, 230));
+        z-index: 999;
+        left: 0px;
+        animation: skeleton 1s linear infinite;
+        transform: skew(-30deg);
+    }
+}
+
+.skeleton .profilePic {
+    width: 150px;
+    height: 150px;
+    background-color: #c0c0c0;
+    border-radius: 50%;
+}
+
+.skeleton .name {
+    width: 250px;
+    height: 30px;
+    background-color: #c0c0c0;
+    border-radius: 8px;
+}
+
+.skeleton .details {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.skeleton .details .cont {
+    width: 80px;
+    height: 50px;
+    background-color: #c0c0c0;
+    border-radius: 8px;
+}
+
+.profile-page {
+    width: 500px;
+    margin: 30px auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-page .profilePic {
+    width: 130px;
+    height: 130px;
+    background-color: #1190e6;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    font-size: 100px;
+    padding: 20px;
+}
+
+.profile-page .name {
+    font-size: 30px;
+    font-style: italic;
+}
+
+.profile-page .details{
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-page .email {
+    padding-right: 10px;
+    border-right: 1px solid #000;
+}
+
+.profile-page .phone {
+   padding-left: 10px;
+}
+
+.profile-page .follow {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.profile-page .posts{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.profile-page .posts div {
+    font-size: 22px;
+}
