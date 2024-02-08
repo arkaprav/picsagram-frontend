@@ -1,23 +1,52 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { GoHomeFill } from "react-icons/go";
 import { FaFacebookMessenger } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { delCookie, getCookie } from '../helpers/cookies';
+import { useGetCurrentUserQuery } from '../store';
 
 
 const MenuBar = ({ setProgress }) => {
     const jwt = getCookie("picsaJWT");
-    const profilePic = getCookie("picsaProfilePic");
-    const username = getCookie("picsaUsername");
+    const { data: user, isFetching } = useGetCurrentUserQuery(jwt);
     const [parent, enable] = useAutoAnimate({ duration: 350 });
+    const [content, setContent] = useState();
 
     const navigate = useNavigate();
 
     useEffect(() => {
         enable(true);
     }, [parent, enable]);
+
+    useEffect(() => {
+        if(user) {
+            setContent(
+                <div className='user'>
+                    {
+                        user.profilePic !== "" ? (
+                            <div className='profile-logo'>
+                                <img src={user.profilePic} alt='profilePic' />
+                            </div>
+                        ) : (
+                            <div className='user-logo'>{user.username[0]}</div>
+                        )
+                    }
+                    <div className='name'>{user.username}</div>
+                </div>
+            );
+        }
+        else if(isFetching) {
+            setContent(
+                <div className='user-skeleton'>
+                    <div className='user-logo' />
+                    <div className='username' />
+                </div>
+            );
+        }
+    }, [user, isFetching]);
+
     return (
         <div className='container' ref={parent}>
             <div className='main-container' ref={parent}>
@@ -43,18 +72,7 @@ const MenuBar = ({ setProgress }) => {
                 {jwt ? (
                     <div className='profile'>
                         <NavLink to="/profile">
-                            <div className='user'>
-                                {
-                                    profilePic !== "" ? (
-                                        <div className='logo'>
-                                            <img src={profilePic} alt='company-log' />
-                                        </div>
-                                    ) : (
-                                        <div className='user-logo'>{username[0]}</div>
-                                    )
-                                }
-                                <div className='name'>{username}</div>
-                            </div>
+                            {content}
                         </NavLink>
                         <div className='menu-invert' onClick={() => { delCookie("picsaJWT"); navigate("/login"); }}>
                             Log Out

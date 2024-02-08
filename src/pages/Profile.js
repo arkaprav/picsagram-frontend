@@ -41,7 +41,9 @@ const Profile = () => {
                     {user.username[0]}
                 </div>
             ) : (
-                <div />
+                <div className='profile-pic'>
+                    <img src={user.profilePic} alt='profile-pic' />
+                </div>
             )}
             <div className='name'>{user.username}</div>
             <div className='details'>

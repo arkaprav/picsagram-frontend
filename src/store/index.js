@@ -19,4 +19,4 @@ setupListeners(store.dispatch);
 
 export { store };
 export { useLoginMutation, useRegisterMutation } from "./apis/UsersAuthApi";
-export { useGetCurrentUserQuery } from "./apis/UsersApi";
+export { useGetCurrentUserQuery, useUpdateUserMutation } from "./apis/UsersApi";
