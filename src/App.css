@@ -526,18 +526,19 @@ a {
 }
 
 .create-post .photo img {
-    width: 306px;
-    height: 406px;
+    width: 308px;
+    height: 408px;
     border: 1px solid #fff;
     border-radius: 20px;
-    margin-top: -3px;
-    margin-left: -3px;
+    margin-top: -4px;
+    margin-left: -4px;
 }
 
 .create-post .post-details {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    position: relative;
 }
 
 .create-post .post-details .user-skeleton {
@@ -548,7 +549,7 @@ a {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    margin: 0;
+    margin: 0px;
     align-items: center;
 }
 
@@ -564,6 +565,10 @@ a {
 
 .profile .username {
     font-size: 22px;
+}
+
+.caption{
+    margin: 0px 20px;
 }
 
 .caption input {
@@ -585,7 +590,12 @@ a {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    align-self: flex-end;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    width: 100%;
 }
 
 .create-post .buttons button {

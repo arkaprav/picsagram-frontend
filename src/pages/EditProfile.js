@@ -16,6 +16,7 @@ const EditProfile = () => {
   const [display, setDisplay] = useState(false);
   const [profilePic, setProfilePic] = useState();
   const [tempProfilePic, setTempProfilePic] = useState();
+  const [picContent, setPicContent] = useState();
   const navigate = useNavigate();
   let content;
 
@@ -48,6 +49,30 @@ const EditProfile = () => {
     }
   }, [user]);
 
+  useEffect(() => {
+    if(tempProfilePic){
+      setPicContent(
+        <div className='profile-pic' onMouseEnter={() => setDisplay(true)} onMouseLeave={() => setDisplay(false)}>
+          <img src={URL.createObjectURL(tempProfilePic)} alt='profile-pic' />
+        </div>
+      )
+    }
+    else if(profilePic === ""){
+      setPicContent(
+        <div className='profilePic' onMouseEnter={() => setDisplay(true)} onMouseLeave={() => setDisplay(false)}>
+            {user.username[0]}
+        </div>
+      )
+    }
+    else{
+      setPicContent(
+        <div className='profile-pic' onMouseEnter={() => setDisplay(true)} onMouseLeave={() => setDisplay(false)}>
+          <img src={profilePic} alt='profile-pic' />
+        </div>
+      )
+    }
+  }, [profilePic, tempProfilePic, user])
+
   if(userError) {
       navigate("/");
   }
@@ -64,15 +89,7 @@ const EditProfile = () => {
   }
   else {
       content = <div className='profile-page'>
-          { profilePic === "" ? (
-              <div className='profilePic' onMouseEnter={() => setDisplay(true)} onMouseLeave={() => setDisplay(false)}>
-                  {user.username[0]}
-              </div>
-          ) : (
-              <div className='profile-pic' onMouseEnter={() => setDisplay(true)} onMouseLeave={() => setDisplay(false)}>
-                <img src={profilePic} alt='profile-pic' />
-              </div>
-          )}
+          {picContent}
           <div
             className='hover'
             style={{ display: display ? "flex" : "none" }} 

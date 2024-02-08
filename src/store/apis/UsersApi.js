@@ -21,7 +21,7 @@ const UsersApi = createApi({
                 }
             }),
             updateUser: builders.mutation({
-            invalidatesTags: (res, err, data) => [{ type: "User", jwt: data.jwt }],
+                invalidatesTags: (res, err, data) => [{ type: "User", jwt: data.jwt }],
                 query: ({ data, jwt }) => {
                     return {
                         url: "/secure/",
@@ -32,10 +32,19 @@ const UsersApi = createApi({
                         data
                     }
                 }
-            })
+            }),
+            getSingleUser: builders.mutation({
+                providesTags: (res, err, id) => [{ type: "SingleUser", id }],
+                query: (id) => {
+                    return {
+                        url: `/${id}`,
+                        method: "GET"
+                    }
+                }
+            }),
         }
     }
 });
 
-export const { useGetCurrentUserQuery, useUpdateUserMutation } = UsersApi;
+export const { useGetCurrentUserQuery, useUpdateUserMutation, useGetSingleUserMutation } = UsersApi;
 export { UsersApi };

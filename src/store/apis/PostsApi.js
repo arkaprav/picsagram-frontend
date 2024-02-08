@@ -68,7 +68,7 @@ const PostsApi = createApi({
                 providesTags: (res, err, data) => [{ type: "SinglePost", id: data }],
                 query: (id) => {
                     return {
-                        url: `/posts/${id}`,
+                        url: `/${id}`,
                         method: "GET",
                     }
                 }
