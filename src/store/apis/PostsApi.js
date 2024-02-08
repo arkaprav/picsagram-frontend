@@ -9,8 +9,8 @@ const PostsApi = createApi({
     endpoints(builders){
         return {
             createPost: builders.mutation({
-                providesTags: (res, err, data ) => [{ type: "Posts" }, { type: "UserPosts" }],
-                query: ({ data, jwt }) => {
+                invalidatesTags: (res, err, data ) => [{ type: "Posts" }, { type: "UsersPosts", id: data.id }],
+                query: ({ data, jwt, id }) => {
                     return {
                         url: "/secure/",
                         method: "POST",
@@ -31,7 +31,7 @@ const PostsApi = createApi({
                 }
             }),
             getUserPosts: builders.query({
-                providesTags: (res, err, data) => [{ type: "UsersPosts" }],
+                providesTags: (res, err, data) => [{ type: "UsersPosts", id: data }],
                 query: (id) => {
                     return {
                         url: `/user/${id}`,
@@ -53,8 +53,8 @@ const PostsApi = createApi({
                 }
             }),
             deleteSinglePost: builders.mutation({
-                invalidatesTags: (res, err, data) => [{ type: "Posts" }, { type: "UsersPosts" }, { type: "SinglePost", id: data.id }],
-                query: ({ id, jwt }) => {
+                invalidatesTags: (res, err, data) => [{ type: "Posts" }, { type: "UsersPosts", id: data.userId }, { type: "SinglePost", id: data.id }],
+                query: ({ id, jwt, userId }) => {
                     return {
                         url: `/secure/${id}`,
                         method: "DELETE",

@@ -6,6 +6,7 @@ import { getCookie } from '../helpers/cookies';
 
 const SinglePostPage = ({ setProgress }) => {
     const jwt = getCookie("picsaJWT");
+    const userId = getCookie("picsaUserId");
     const { id } = useParams();
     const { data: post, isFetching } = useGetSinglePostQuery(id);
     const [getPostUser, getResults] = useGetSingleUserMutation();
@@ -25,7 +26,7 @@ const SinglePostPage = ({ setProgress }) => {
 
     const DeletePost = async (id) => {
         setProgress(50);
-        await deletePost({ id, jwt }).unwrap().then((res) => {
+        await deletePost({ id, jwt, userId }).unwrap().then((res) => {
             console.log(res);
             setProgress(100);
             navigate("/profile");

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const CreatePost = ({ setProgress }) => {
   const jwt = getCookie("picsaJWT");
+  const id = getCookie("picsaUserId");
   const { data: user, isFetching } = useGetCurrentUserQuery(jwt);
   const [createPost, createResults] = useCreatePostMutation();
   const [caption, setCaption] = useState();
@@ -48,7 +49,7 @@ const CreatePost = ({ setProgress }) => {
     data.append("post_image", photo);
     data.append("caption", caption);
     setProgress(50);
-    await createPost({ data, jwt }).unwrap().then((res) => {
+    await createPost({ data, jwt, id }).unwrap().then((res) => {
       navigate(`/post/${res._id}`);
       setProgress(100);
     }).catch(err => {

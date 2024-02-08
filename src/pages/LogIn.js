@@ -27,8 +27,7 @@ const LogIn = ({ setProgress }) => {
         await loginUser(data).unwrap().then((res) => {
             setProgress(100);
             setCookie("picsaJWT", res.jwt, 7);
-            setCookie("picsaProfilePic", res.profilePic, 7);
-            setCookie("picsaUsername", res.username, 7);
+            setCookie("picsaUserId", res.id, 7);
             navigate("/profile");
         }).catch((err) => {
             setError(err.data.message);

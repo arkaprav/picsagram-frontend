@@ -1,17 +1,22 @@
 import React from 'react'
-import { useGetCurrentUserQuery } from '../store';
+import { useGetCurrentUserQuery, useGetUserPostsQuery } from '../store';
 import { getCookie } from '../helpers/cookies';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 const Profile = () => {
     const jwt = getCookie("picsaJWT");
+    const id = getCookie("picsaUserId");
     const { data: user, error: userError, isFetching: userFetching} = useGetCurrentUserQuery(jwt);
+    const { data: posts, isFetching: postFetching } = useGetUserPostsQuery(id);
     const navigate = useNavigate();
+
+    console.log(posts);
+
     let content;
     if(userError) {
         navigate("/");
     }
-    else if(userFetching){
+    else if(userFetching || postFetching){
         content = <div className='skeleton'>
             <div className='profilePic' />
             <div className='name' />
@@ -57,7 +62,7 @@ const Profile = () => {
             <div className='follow'>
                 <div>{JSON.parse(user.follower).length} followers</div>
                 <div>{JSON.parse(user.following).length} following</div>
-                <div>{JSON.parse(user.no_of_posts).length} posts</div>
+                <div>{posts.length} posts</div>
             </div>
             <div className='buttons'>
                 <NavLink to='/edit-profile'>
