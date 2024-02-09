@@ -48,26 +48,43 @@ const SinglePostPage = ({ setProgress }) => {
                             <img src={post.image} alt="post" />
                         </div>
                         <div className='post-details'>
-                        <div className='profile'>
-                            <div className='pic'>
-                                <img src={creator.profilePic} alt='profilePic' />
+                            <div className='profile'>
+                                <div className='pic'>
+                                    <img src={creator.profilePic} alt='profilePic' />
+                                </div>
+                                <div className='username'>{creator.username}</div>
                             </div>
-                            <div className='username'>{creator.username}</div>
-                        </div>
-                        <div className='caption'>
-                          {post.caption}
-                        </div>
-                        <div className='buttons'>
-                            <Button loading={deleteResults.isLoading} onClick={() => DeletePost(post._id)}>
-                                Delete
-                            </Button>
-                        </div>
+                            <div className='caption'>
+                            {post.caption}
+                            </div>
+                            <div className='buttons'>
+                                <Button loading={deleteResults.isLoading} onClick={() => DeletePost(post._id)}>
+                                    Delete
+                                </Button>
+                            </div>
                       </div>
                     </div>
                 );
             }
         }
-    }, [post, creator, getResults.isLoading]);
+        else if (isFetching || getResults.isLoading) {
+            setContent(
+                <div className='post-skeleton'>
+                    <div className='photo' />
+                    <div className='post-details'>
+                        <div className='profile'>
+                            <div className='pic' />
+                            <div className='username' />
+                        </div>
+                        <div className='caption' />
+                        <div className='buttons'>
+                            <div className='button' />
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+    }, [post, creator, getResults.isLoading, isFetching]);
     
     return content;
 }
