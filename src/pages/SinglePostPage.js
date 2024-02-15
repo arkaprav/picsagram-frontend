@@ -55,7 +55,7 @@ const SinglePostPage = ({ setProgress }) => {
                                 <div className='username'>{creator.username}</div>
                             </div>
                             <div className='caption'>
-                            {post.caption}
+                                {post.caption}
                             </div>
                             <div className='buttons'>
                                 <Button loading={deleteResults.isLoading} onClick={() => DeletePost(post._id)}>
@@ -84,7 +84,7 @@ const SinglePostPage = ({ setProgress }) => {
                 </div>
             )
         }
-    }, [post, creator, getResults.isLoading, isFetching]);
+    }, [post, creator, getResults.isLoading, isFetching, deleteResults.isLoading]);
     
     return content;
 }

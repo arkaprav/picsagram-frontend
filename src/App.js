@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import CreatePost from './pages/CreatePost';
 import EditProfile from './pages/EditProfile';
 import SinglePostPage from './pages/SinglePostPage';
+import Posts from './pages/Posts';
 
 function App() {
   const [progress, setProgress] = useState(0);
@@ -23,7 +24,7 @@ function App() {
       />
       <CustomeRoutes setProgress={setProgress}>
         <Route path='/' element={<MenuBar setProgress={setProgress} />}>
-          <Route index element={<div>Home...</div>} />
+          <Route index element={<Posts setProgress={setProgress} />} />
           <Route path='search' element={<div>Search...</div>} />
           <Route path='message' element={<div>Message...</div>} />
           <Route path='login' element={<LogIn setProgress={setProgress} />} />
