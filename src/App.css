@@ -761,3 +761,19 @@ a {
     margin: 0px 10px;
     margin-bottom: 5px;
 }
+
+.fetching {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 80vh;
+    padding: auto;
+}
+
+.fetching > * {
+    font-size: 30px;
+    color: #acacac;
+}
