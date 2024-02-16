@@ -8,7 +8,6 @@ const PostProfile = ({ id }) => {
     useEffect(() => {
         const fetchUser = async () => {
             await getUser(id).unwrap().then((res) => {
-                console.log(res);
                 setData(res);
             }).catch((err) => {
                 console.log(err);

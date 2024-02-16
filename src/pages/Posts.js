@@ -31,56 +31,127 @@ const Posts = () => {
                 return i%5 === 4;
             });
             setContent1(c1.map((c) => {
+                const today = new Date();
+                const postDate = new Date(c.createdAt);
+                let string;
+                if(today.getFullYear() === postDate.getFullYear() && today.getMonth() === postDate.getMonth() && today.getDate() === postDate.getDate()){
+                    string = `${postDate.getHours()}-${postDate.getMinutes()}`
+                }
+                else {
+                    string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
+                }
                 return <NavLink to={`post/${c._id}`}>
                     <div className='single-post'>
                         <img src={c.image} alt={c.caption} />
                         <PostProfile id={c.createdBy} />
-                        <p>{c.caption}</p>
-                    </div>
-                </NavLink>
-            }));
-            setContent1(c1.map((c) => {
-                return <NavLink to={`post/${c._id}`}>
-                    <div className='single-post'>
-                        <img src={c.image} alt={c.caption} />
-                        <PostProfile id={c.createdBy} />
-                        <p>{c.caption}</p>
+                        <p>
+                            <div>
+                                {c.caption}
+                            </div>
+                            <div>
+                                {string}
+                            </div>
+                        </p>
                     </div>
                 </NavLink>
             }));
             setContent2(c2.map((c) => {
+                const today = new Date();
+                const postDate = new Date(c.createdAt);
+                let string;
+                if(today.getFullYear() === postDate.getFullYear() && today.getMonth() === postDate.getMonth() && today.getDate() === postDate.getDate()){
+                    string = `${postDate.getHours()}-${postDate.getMinutes()}`
+                }
+                else {
+                    string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
+                }
                 return <NavLink to={`post/${c._id}`}>
                     <div className='single-post'>
                         <img src={c.image} alt={c.caption} />
                         <PostProfile id={c.createdBy} />
-                        <p>{c.caption}</p>
+                        <p>
+                            <div>
+                                {c.caption}
+                            </div>
+                            <div>
+                                {string}
+                            </div>
+                        </p>
                     </div>
                 </NavLink>
             }));
             setContent3(c3.map((c) => {
+                const today = new Date();
+                const postDate = new Date(c.createdAt);
+                let string;
+                if(today.getFullYear() === postDate.getFullYear() && today.getMonth() === postDate.getMonth() && today.getDate() === postDate.getDate()){
+                    string = `${postDate.getHours()}-${postDate.getMinutes()}`
+                }
+                else {
+                    string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
+                }
                 return <NavLink to={`post/${c._id}`}>
                     <div className='single-post'>
                         <img src={c.image} alt={c.caption} />
                         <PostProfile id={c.createdBy} />
-                        <p>{c.caption}</p>
+                        <p>
+                            <div>
+                                {c.caption}
+                            </div>
+                            <div>
+                                {string}
+                            </div>
+                        </p>
                     </div>
                 </NavLink>
             }));
             setContent4(c4.map((c) => {
+                const today = new Date();
+                const postDate = new Date(c.createdAt);
+                let string;
+                if(today.getFullYear() === postDate.getFullYear() && today.getMonth() === postDate.getMonth() && today.getDate() === postDate.getDate()){
+                    string = `${postDate.getHours()}-${postDate.getMinutes()}`
+                }
+                else {
+                    string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
+                }
                 return <NavLink to={`post/${c._id}`}>
                     <div className='single-post'>
                         <img src={c.image} alt={c.caption} />
                         <PostProfile id={c.createdBy} />
-                        <p>{c.caption}</p>
+                        <p>
+                            <div>
+                                {c.caption}
+                            </div>
+                            <div>
+                                {string}
+                            </div>
+                        </p>
                     </div>
                 </NavLink>
             }));
             setContent5(c5.map((c) => {
+                const today = new Date();
+                const postDate = new Date(c.createdAt);
+                let string;
+                if(today.getFullYear() === postDate.getFullYear() && today.getMonth() === postDate.getMonth() && today.getDate() === postDate.getDate()){
+                    string = `${postDate.getHours()}-${postDate.getMinutes()}`
+                }
+                else {
+                    string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
+                }
                 return <NavLink to={`post/${c._id}`}>
                     <div className='single-post'>
                         <img src={c.image} alt={c.caption} />
                         <PostProfile id={c.createdBy} />
-                        <p>{c.caption}</p>
+                        <p>
+                            <div>
+                                {c.caption}
+                            </div>
+                            <div>
+                                {string}
+                            </div>
+                        </p>
                     </div>
                 </NavLink>
             }));
@@ -94,7 +165,7 @@ const Posts = () => {
                 </div>
             )
         }
-    }, [posts]);
+    }, [posts, isFetching]);
 
     return (
         <div className='all-posts'>

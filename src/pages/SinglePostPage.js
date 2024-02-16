@@ -3,6 +3,9 @@ import { useDeleteSinglePostMutation, useGetSinglePostQuery, useGetSingleUserMut
 import { useNavigate, useParams } from 'react-router-dom'
 import Button from '../components/Button';
 import { getCookie } from '../helpers/cookies';
+import { FaRegPaperPlane } from "react-icons/fa";
+import { GoThumbsup } from "react-icons/go";
+import { GoBookmarkFill } from "react-icons/go";
 
 const SinglePostPage = ({ setProgress }) => {
     const jwt = getCookie("picsaJWT");
@@ -42,6 +45,15 @@ const SinglePostPage = ({ setProgress }) => {
                 getPostCreator(post.createdBy);
             }
             else{
+                const today = new Date();
+                const postDate = new Date(post.createdAt);
+                let string;
+                if(today.getFullYear() === postDate.getFullYear() && today.getMonth() === postDate.getMonth() && today.getDate() === postDate.getDate()){
+                    string = `${postDate.getHours()}-${postDate.getMinutes()}`
+                }
+                else {
+                    string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
+                }
                 setContent(
                     <div className='create-post'>
                         <div className='photo'>
@@ -54,9 +66,32 @@ const SinglePostPage = ({ setProgress }) => {
                                 </div>
                                 <div className='username'>{creator.username}</div>
                             </div>
+                            <div className='post-date'>
+                                {string}
+                            </div>
                             <div className='caption'>
                                 {post.caption}
                             </div>
+                            {jwt && (
+                                <div className='feat'>
+                                    <Button>
+                                        <GoThumbsup />
+                                        <p>Likes</p>
+                                    </Button>
+                                    <Button>
+                                        <GoBookmarkFill />
+                                        <p>Save Post</p>
+                                    </Button>
+                                </div>
+                            )}
+                            {jwt && (
+                                <div className='comment'>
+                                    <input type='text' name='comment' placeholder='comment..' />
+                                    <Button>
+                                        <FaRegPaperPlane />
+                                    </Button>
+                                </div>
+                            )}
                             <div className='buttons'>
                                 <Button loading={deleteResults.isLoading} onClick={() => DeletePost(post._id)}>
                                     Delete

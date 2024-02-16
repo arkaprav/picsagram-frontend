@@ -594,7 +594,7 @@ a {
     bottom: 0;
     right: 0;
     background-color: #fff;
-    width: 100%;
+    width: fit-content;
 }
 
 .create-post .buttons button {
@@ -723,10 +723,14 @@ a {
 }
 
 .all-posts .single-post-col .single-post p {
-    margin: 0px 45px;
+    margin-left: 45px;
+    margin-right: 25px;
     margin-top: -5px;
     color: #393939;
     font-size: 13px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .all-posts .single-post-col .single-post .profile .pic img {
@@ -776,4 +780,75 @@ a {
 .fetching > * {
     font-size: 30px;
     color: #acacac;
+}
+
+.comment {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    margin: 5px 10px;
+}
+
+.comment input {
+    width: 250px;
+    margin: 0px 10px;
+    padding: 5px 12px;
+    font-size: 18px;
+    border: 1px solid #9e9e9e;
+    border-radius: 20px;
+}
+
+.comment button {
+    color: #fff;
+    background-image: linear-gradient(to right, #acacac, #000);
+    border-radius: 50%;
+    border: 1px solid #fff;
+    font-size: 18px;
+    padding: 3px 5px;
+    cursor: pointer;
+}
+
+.comment button svg {
+    margin: 5px 3px;
+    margin-bottom: -1px;
+    margin-left: 1px;
+}
+
+.feat {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    border-bottom: 1px solid #acacac;
+    border-top: 1px solid #acacac;
+    padding: 5px 10px;
+}
+
+.feat button {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    background-color: #fff;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    border: 1px solid #fff;
+    padding: 0px auto;
+    cursor: pointer;
+}
+
+.feat button svg {
+    font-size: 22px;
+}
+
+.feat button p {
+    font-size: 15px;
+    padding: 0px;
+    margin: 0px;
+}
+.post-date {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: 25px 5px;
 }
