@@ -552,6 +552,17 @@ a {
     align-items: center;
 }
 
+.profile .no-pic{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #00426e;
+    font-size: 15px;
+    padding: 5px;
+    text-align: center;
+    color: #fff;
+}
+
 .profile .pic {
     margin-top: 5px;
     width: 40px;

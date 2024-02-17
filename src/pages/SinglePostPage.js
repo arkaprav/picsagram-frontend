@@ -49,7 +49,7 @@ const SinglePostPage = ({ setProgress }) => {
                 const postDate = new Date(post.createdAt);
                 let string;
                 if(today.getFullYear() === postDate.getFullYear() && today.getMonth() === postDate.getMonth() && today.getDate() === postDate.getDate()){
-                    string = `${postDate.getHours()}-${postDate.getMinutes()}`
+                    string = `${postDate.getHours()} : ${postDate.getMinutes()}`
                 }
                 else {
                     string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
@@ -61,9 +61,15 @@ const SinglePostPage = ({ setProgress }) => {
                         </div>
                         <div className='post-details'>
                             <div className='profile'>
-                                <div className='pic'>
-                                    <img src={creator.profilePic} alt='profilePic' />
-                                </div>
+                                {creator.profilePic === "" ? (
+                                    <div className='no-pic'>
+                                        {creator.username[0]}
+                                    </div>
+                                ) : (
+                                    <div className='pic'>
+                                        <img src={creator.profilePic} alt='profilePic' />
+                                    </div>
+                                )}
                                 <div className='username'>{creator.username}</div>
                             </div>
                             <div className='post-date'>
@@ -92,11 +98,13 @@ const SinglePostPage = ({ setProgress }) => {
                                     </Button>
                                 </div>
                             )}
-                            <div className='buttons'>
-                                <Button loading={deleteResults.isLoading} onClick={() => DeletePost(post._id)}>
-                                    Delete
-                                </Button>
-                            </div>
+                            {creator._id === userId && (
+                                <div className='buttons'>
+                                    <Button loading={deleteResults.isLoading} onClick={() => DeletePost(post._id)}>
+                                        Delete
+                                    </Button>
+                                </div>
+                            )}
                       </div>
                     </div>
                 );

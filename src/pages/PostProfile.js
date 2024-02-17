@@ -29,9 +29,15 @@ const PostProfile = ({ id }) => {
             if(data){
                 setContent(
                     <div className='profile'>
-                        <div className='pic'>
-                            <img src={data.profilePic} alt='profilePic' />
-                        </div>
+                        {data.profilePic === "" ? (
+                            <div className='no-pic'>
+                                {data.username[0]}
+                            </div>
+                        ) : (
+                            <div className='pic'>
+                                <img src={data.profilePic} alt='profilePic' />
+                            </div>
+                        )}
                         <div className='username'>{data.username}</div>
                     </div>
                 )

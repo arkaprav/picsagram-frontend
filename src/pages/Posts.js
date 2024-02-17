@@ -35,7 +35,7 @@ const Posts = () => {
                 const postDate = new Date(c.createdAt);
                 let string;
                 if(today.getFullYear() === postDate.getFullYear() && today.getMonth() === postDate.getMonth() && today.getDate() === postDate.getDate()){
-                    string = `${postDate.getHours()}-${postDate.getMinutes()}`
+                    string = `${postDate.getHours()} : ${postDate.getMinutes()}`
                 }
                 else {
                     string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
@@ -60,7 +60,7 @@ const Posts = () => {
                 const postDate = new Date(c.createdAt);
                 let string;
                 if(today.getFullYear() === postDate.getFullYear() && today.getMonth() === postDate.getMonth() && today.getDate() === postDate.getDate()){
-                    string = `${postDate.getHours()}-${postDate.getMinutes()}`
+                    string = `${postDate.getHours()} : ${postDate.getMinutes()}`
                 }
                 else {
                     string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
@@ -85,7 +85,7 @@ const Posts = () => {
                 const postDate = new Date(c.createdAt);
                 let string;
                 if(today.getFullYear() === postDate.getFullYear() && today.getMonth() === postDate.getMonth() && today.getDate() === postDate.getDate()){
-                    string = `${postDate.getHours()}-${postDate.getMinutes()}`
+                    string = `${postDate.getHours()} : ${postDate.getMinutes()}`
                 }
                 else {
                     string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
@@ -110,7 +110,7 @@ const Posts = () => {
                 const postDate = new Date(c.createdAt);
                 let string;
                 if(today.getFullYear() === postDate.getFullYear() && today.getMonth() === postDate.getMonth() && today.getDate() === postDate.getDate()){
-                    string = `${postDate.getHours()}-${postDate.getMinutes()}`
+                    string = `${postDate.getHours()} : ${postDate.getMinutes()}`
                 }
                 else {
                     string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
@@ -135,7 +135,7 @@ const Posts = () => {
                 const postDate = new Date(c.createdAt);
                 let string;
                 if(today.getFullYear() === postDate.getFullYear() && today.getMonth() === postDate.getMonth() && today.getDate() === postDate.getDate()){
-                    string = `${postDate.getHours()}-${postDate.getMinutes()}`
+                    string = `${postDate.getHours()} : ${postDate.getMinutes()}`
                 }
                 else {
                     string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
