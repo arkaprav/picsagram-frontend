@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useDeleteSinglePostMutation, useGetSinglePostQuery, useGetSingleUserMutation } from '../store'
+import { useDeleteSinglePostMutation, useGetSinglePostQuery, useGetSingleUserMutation, useUpdateLikesMutation } from '../store'
 import { useNavigate, useParams } from 'react-router-dom'
 import Button from '../components/Button';
 import { getCookie } from '../helpers/cookies';
 import { FaRegPaperPlane } from "react-icons/fa";
-import { GoThumbsup } from "react-icons/go";
-import { GoBookmarkFill } from "react-icons/go";
+import { FaRegThumbsUp } from "react-icons/fa";
+import { FaThumbsUp } from "react-icons/fa";
+import { GoBookmark } from "react-icons/go";
 
 const SinglePostPage = ({ setProgress }) => {
     const jwt = getCookie("picsaJWT");
@@ -14,6 +15,7 @@ const SinglePostPage = ({ setProgress }) => {
     const { data: post, isFetching } = useGetSinglePostQuery(id);
     const [getPostUser, getResults] = useGetSingleUserMutation();
     const [deletePost, deleteResults] = useDeleteSinglePostMutation();
+    const [likePost, likeResults] = useUpdateLikesMutation();
     const [creator, setCreator] = useState();
     const [content, setContent] = useState();
 
@@ -26,6 +28,17 @@ const SinglePostPage = ({ setProgress }) => {
             console.log(err);
         })
     };
+
+    const handleLikes = async (id) => {
+        setProgress(50);
+        await likePost({ id, jwt }).unwrap().then((res) => {
+            setProgress(100);
+            console.log(res);
+        }).catch((err) => {
+            setProgress(100);
+            console.log(err);
+        })
+    }
 
     const DeletePost = async (id) => {
         setProgress(50);
@@ -80,16 +93,19 @@ const SinglePostPage = ({ setProgress }) => {
                             </div>
                             {jwt && (
                                 <div className='feat'>
-                                    <Button>
-                                        <GoThumbsup />
+                                    <Button onClick={() => handleLikes(post._id)}>
+                                        {JSON.parse(post.likes).includes(userId) ? <FaThumbsUp /> : <FaRegThumbsUp />}
                                         <p>Likes</p>
                                     </Button>
                                     <Button>
-                                        <GoBookmarkFill />
+                                        <GoBookmark />
                                         <p>Save Post</p>
                                     </Button>
                                 </div>
                             )}
+                            <div className='likes'>
+                                {JSON.parse(post.likes).length} likes
+                            </div>
                             {jwt && (
                                 <div className='comment'>
                                     <input type='text' name='comment' placeholder='comment..' />
