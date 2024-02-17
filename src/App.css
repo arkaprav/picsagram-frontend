@@ -29,7 +29,7 @@
 
 .hiding {
     display: none;
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     left: 0px;
     flex-direction: row;
@@ -943,7 +943,7 @@ a {
         width: 130px;
     }
     .top-menu-bar {
-        min-width: 80vw;
+        min-width: 85vw;
     }
     .logo {
         width: 130px;
@@ -965,7 +965,7 @@ a {
     }
     .profile {
         margin-left: 0px;
-        margin-right: 10px;
+        margin-right: -20px;
     }
     .profile .menu,
     .profile .menu-invert {
@@ -980,5 +980,76 @@ a {
     }
     .main-container {
         margin-bottom: 8vh;
+    }
+    .profile-page, .skeleton {
+        width: 70vw;
+        margin: 10px auto;
+        gap: 10px;
+    }
+    .profile-page .profile-pic {
+        width: 100px;
+    }
+    .profile-page .profile-pic img {
+        width: 100px;
+    }
+    .profile-page .name {
+        font-size: 18px;
+    }
+    .profile-page .details div {
+        font-size: 15px;
+    }
+    .profile-page .details .email {
+        margin-right: 5px;
+    }
+    .profile-page .details .phone {
+        margin-left: 0px;
+    }
+    .profile-page .follow {
+        gap: 5px;
+    }
+    .profile-page .follow div {
+        font-size: 8px;
+    }
+    .profile-page .buttons, .skeleton .buttons {
+        gap: 5px;
+    }
+    .profile-page .buttons div {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+    .posts {
+        gap: 10px;
+    }
+    .posts div {
+        font-size: 15px;
+    }
+    .created {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        width: 80vw;
+    }
+    .all-posts .single-post-col .single-post img {
+        width: 260px;
+    }
+    .all-posts .single-post-col .single-post .profile .pic {
+        width: 50px;
+    }
+    .all-posts .single-post-col .single-post .profile .pic img {
+        width: 50px;
+    }
+    .all-posts .single-post-col .single-post .profile .username {
+        font-size: 20px;
+    }
+    .all-posts .single-post-col .single-post p {
+        margin-left: 55px;
+        margin-top: 0px;
+        font-size: 18px;
+        margin-right: 8px;
+    }
+    .all-posts .single-post-col .single-post .profile .no-pic{
+        width: 30px;
+        height: 30px;
+        font-size: 23px;
     }
 }
