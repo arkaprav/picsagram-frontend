@@ -23,4 +23,4 @@ setupListeners(store.dispatch);
 export { store };
 export { useCreatePostMutation, useGetAllPostsQuery, useGetUserPostsQuery, useDeleteSinglePostMutation, useGetSinglePostQuery, useUpdateLikesMutation, useUpdateSinglePostMutation } from "./apis/PostsApi";
 export { useLoginMutation, useRegisterMutation } from "./apis/UsersAuthApi";
-export { useGetCurrentUserQuery, useUpdateUserMutation, useGetSingleUserMutation } from "./apis/UsersApi";
+export { useGetCurrentUserQuery, useUpdateUserMutation, useGetSingleUserMutation, useUpdateSavePostMutation } from "./apis/UsersApi";
