@@ -1,7 +1,7 @@
 import React from 'react'
 import { useGetCurrentUserQuery, useGetUserPostsQuery } from '../store';
 import { getCookie } from '../helpers/cookies';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, Outlet } from 'react-router-dom';
 
 const Profile = () => {
     const jwt = getCookie("picsaJWT");
@@ -9,8 +9,6 @@ const Profile = () => {
     const { data: user, error: userError, isFetching: userFetching} = useGetCurrentUserQuery(jwt);
     const { data: posts, isFetching: postFetching } = useGetUserPostsQuery(id);
     const navigate = useNavigate();
-
-    console.log(posts);
 
     let content;
     if(userError) {
@@ -77,9 +75,14 @@ const Profile = () => {
                 </NavLink>
             </div>
             <div className='posts'>
-                <div>Posts</div>
-                <div>Saved</div>
+                <NavLink to="/profile">
+                    <div>Posts</div>
+                </NavLink>
+                <NavLink to="/profile/saved">
+                    <div>Saved</div>
+                </NavLink>
             </div>
+            <Outlet />
         </div>
     }
     return content;

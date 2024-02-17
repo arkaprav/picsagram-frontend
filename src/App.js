@@ -11,6 +11,8 @@ import CreatePost from './pages/CreatePost';
 import EditProfile from './pages/EditProfile';
 import SinglePostPage from './pages/SinglePostPage';
 import Posts from './pages/Posts';
+import UserPosts from './pages/UserPosts';
+import UserSaved from './pages/UserSaved';
 
 function App() {
   const [progress, setProgress] = useState(0);
@@ -29,7 +31,10 @@ function App() {
           <Route path='message' element={<div>Message...</div>} />
           <Route path='login' element={<LogIn setProgress={setProgress} />} />
           <Route path='signup' element={<SignUp setProgress={setProgress} />} />
-          <Route path='profile' element={<Profile />} />
+          <Route path='profile' element={<Profile />}>
+            <Route index element={<UserPosts />} />
+            <Route path='saved' element={<UserSaved />} />
+          </Route>
           <Route path='create-post' element={<CreatePost setProgress={setProgress} />} />
           <Route path='edit-profile' element={<EditProfile setProgress={setProgress} /> } />
           <Route path='post/:id' element={<SinglePostPage setProgress={setProgress} /> } />
