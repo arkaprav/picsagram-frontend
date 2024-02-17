@@ -1052,4 +1052,7 @@ a {
         height: 30px;
         font-size: 23px;
     }
+    .auth {
+        width: 265px;
+    }
 }
