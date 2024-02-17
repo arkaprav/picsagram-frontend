@@ -94,6 +94,17 @@ const MenuBar = ({ setProgress }) => {
                     </div>
                 )}
             </div>
+            <div className='hiding'>
+                <NavLink to="/">
+                    <GoHomeFill />
+                </NavLink>
+                <NavLink to="/message">
+                    <FaFacebookMessenger />
+                </NavLink>
+                <NavLink to="/search">
+                    <FaSearch />
+                </NavLink>
+            </div>
         </div>
     )
 }

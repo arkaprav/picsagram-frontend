@@ -27,6 +27,23 @@
     min-width: 900px;
 }
 
+.hiding {
+    display: none;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100vw;
+    background-color: #fff !important;
+    padding: 10px;
+}
+
+.hiding a {
+    color: #000;
+    font-size: 20px;
+}
+
 .main-container{
     margin: 0px 50px;
     margin-top: 15vh;
@@ -919,4 +936,49 @@ a {
 .likes {
     font-size: 12px;
     color: #585858;
+}
+
+@media screen and (max-width: 480px) {
+    .logo img {
+        width: 130px;
+    }
+    .top-menu-bar {
+        min-width: 80vw;
+    }
+    .logo {
+        width: 130px;
+        margin-top: 20px;
+        margin-right: 0px;
+    }
+    .menu-items {
+        display: none;
+    }
+    .user .name {
+        display: none;
+    }
+    .user-skeleton .username {
+        display: none;
+    }
+    button {
+        font-size: 12px !important;
+        padding: 2px 5px;
+    }
+    .profile {
+        margin-left: 0px;
+        margin-right: 10px;
+    }
+    .profile .menu,
+    .profile .menu-invert {
+        font-size: 12px !important;
+        padding: 5px 8px;
+    }
+    .hiding {
+        display: flex;
+    }
+    .all-posts {
+        flex-direction: column;
+    }
+    .main-container {
+        margin-bottom: 8vh;
+    }
 }
