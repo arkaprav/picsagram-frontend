@@ -972,6 +972,9 @@ a {
         font-size: 12px !important;
         padding: 5px 8px;
     }
+    .user-skeleton .username {
+        display: none;
+    }
     .hiding {
         display: flex;
     }
@@ -1017,6 +1020,9 @@ a {
         font-size: 12px;
         padding: 8px 12px;
     }
+    .profile-page input {
+        width: 250px;
+    }
     .posts {
         gap: 10px;
     }
@@ -1054,5 +1060,39 @@ a {
     }
     .auth {
         width: 265px;
+    }
+    .create-post {
+        flex-direction: column;
+        margin: 10px auto;
+        width: 60vw;
+    }
+    .create-post .photo {
+        width: 59vw;
+        height: 59vw;
+    }
+    .create-post .photo img {
+        width: 65vw;
+        height: 65vw;
+    }
+    .post-details .caption {
+        width: 45vw;
+    }
+    .post-details .comment {
+        position: relative;
+        margin: 10px auto;
+    }
+    .post-details .comment input {
+        width: 40vw;
+    }
+    .post-details .comment button {
+        font-size: 15px;
+    }
+    .create-post .caption input {
+        width: 45vw;
+    }
+    .create-post .buttons {
+        position: relative;
+        justify-content: center;
+        width: 60vw;
     }
 }
