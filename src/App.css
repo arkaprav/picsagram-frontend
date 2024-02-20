@@ -938,6 +938,39 @@ a {
     color: #585858;
 }
 
+.comments {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 150px;
+    overflow-y: scroll;
+}
+
+.single-comment .profile{
+    gap: 10px;
+}
+
+.single-comment .profile .pic{
+    width: 30px;
+}
+
+.single-comment .profile .pic img {
+    width: 30px;
+}
+
+.single-comment .profile .username {
+    font-size: 15px;
+}
+
+.single-comment p {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-left: 50px;
+    margin-top: -20px;
+    font-size: 13px;
+}
+
 @media screen and (max-width: 480px) {
     .logo img {
         width: 130px;
