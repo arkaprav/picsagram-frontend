@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useCreateCommentMutation, useDeleteSinglePostMutation, useGetAllPostCommentsQuery, useGetCurrentUserQuery, useGetSinglePostQuery, useGetSingleUserMutation, useUpdateLikesMutation, useUpdateSavePostMutation } from '../store'
+import { useCreateCommentMutation, useDeleteSinglePostMutation, useGetCurrentUserQuery, useGetSinglePostQuery, useGetSingleUserMutation, useUpdateLikesMutation, useUpdateSavePostMutation } from '../store'
 import { useNavigate, useParams } from 'react-router-dom'
 import Button from '../components/Button';
 import { getCookie } from '../helpers/cookies';
@@ -25,8 +25,6 @@ const SinglePostPage = ({ setProgress }) => {
     const [comment, setComment] = useState();
 
     const navigate = useNavigate();
-
-    console.log(comment);
 
     const getPostCreator = async (id) => {
         await getPostUser(post.createdBy).unwrap().then((res) => {
@@ -63,10 +61,9 @@ const SinglePostPage = ({ setProgress }) => {
             caption: comment,
             postId: post._id,
         };
-        console.log(data);
         setProgress(50);
         await createComment({ data, jwt, postId: post._id }).unwrap().then((res) => {
-            console.log(res);
+            setComment();
             setProgress(100);
         }).catch((err) => {
             console.log(err);
@@ -141,7 +138,7 @@ const SinglePostPage = ({ setProgress }) => {
                             <div className='likes'>
                                 {JSON.parse(post.likes).length} likes
                             </div>
-                            <Comments id={id} />
+                            <Comments postId={id} setProgress={setProgress} />
                             {jwt && (
                                 <div className='comment'>
                                     <input 
@@ -185,10 +182,7 @@ const SinglePostPage = ({ setProgress }) => {
                 </div>
             )
         }
-        console.log(isFetching, '/');
-        console.log(userFetching, '/');
-        console.log(getResults.isLoading, '/');
-    }, [post, creator, getResults.isLoading, isFetching, deleteResults.isLoading]);
+    }, [post, creator, getResults.isLoading, isFetching, deleteResults.isLoading, comment]);
     
     return content;
 }

@@ -941,8 +941,7 @@ a {
 .comments {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    height: 150px;
+    height: 140px;
     overflow-y: scroll;
 }
 
@@ -969,6 +968,20 @@ a {
     margin-left: 50px;
     margin-top: -20px;
     font-size: 13px;
+}
+
+.single-comment p button {
+    background-image: linear-gradient(to right, #acacac, #000);
+    color: #fff;
+    font-size: 12px;
+    border-radius: 12px;
+    padding: 3px 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.single-comment p svg {
+    cursor: pointer;
 }
 
 @media screen and (max-width: 480px) {

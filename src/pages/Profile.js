@@ -60,7 +60,7 @@ const Profile = () => {
             <div className='follow'>
                 <div>{JSON.parse(user.follower).length} followers</div>
                 <div>{JSON.parse(user.following).length} following</div>
-                <div>{posts.length} posts</div>
+                <div>{posts && posts.length} posts</div>
             </div>
             <div className='buttons'>
                 <NavLink to='/edit-profile'>
