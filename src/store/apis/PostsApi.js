@@ -40,8 +40,9 @@ const PostsApi = createApi({
                         queryFulfilled,
                     }
                 ) {
-                    await queryFulfilled;
-                    dispatch(UsersApi.util.invalidateTags([{ type: "User", jwt: arg.jwt}, { type: "Users" }]));
+                    await queryFulfilled.then(() => {
+                        dispatch(UsersApi.util.invalidateTags([{ type: "User", jwt: arg.jwt}, { type: "Users" }]));
+                    });
                 },
             }),
             getAllPosts: builders.query({
