@@ -47,7 +47,7 @@ const CommentsApi = createApi({
                 }
             }),
             updateLikeComment: builders.mutation({
-                providesTags: (res, err, data) => [{ type: "PostComments", id: data.postId }, { type: "SingleComment", id: data.id}],
+                invalidatesTags: (res, err, data) => [{ type: "PostComments", id: data.postId }, { type: "SingleComment", id: data.id}],
                 query: ({ id, jwt, postId }) => {
                     return {
                         url: `/secure/likes/${id}`,

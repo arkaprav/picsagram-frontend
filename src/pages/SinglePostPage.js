@@ -26,65 +26,63 @@ const SinglePostPage = ({ setProgress }) => {
 
     const navigate = useNavigate();
 
-    const getPostCreator = async (id) => {
-        await getPostUser(post.createdBy).unwrap().then((res) => {
-            setCreator(res);
-        }).catch((err) => {
-            console.log(err);
-        })
-    };
-
-    const handleLikes = async (id) => {
-        setProgress(50);
-        await likePost({ id, jwt }).unwrap().then((res) => {
-            setProgress(100);
-            console.log(res);
-        }).catch((err) => {
-            setProgress(100);
-            console.log(err);
-        })
-    }
-
-    const handleSave = async (id) => {
-        setProgress(50);
-        await savePost({ id, jwt }).unwrap().then((res) => {
-            setProgress(100);
-            window.location.reload();
-        }).catch((err) => {
-            console.log(err);
-            setProgress(100);
-        });
-    }
-
-    const handleComment = async () => {
-        const data = {
-            caption: comment,
-            postId: post._id,
-        };
-        setProgress(50);
-        await createComment({ data, jwt, postId: post._id }).unwrap().then((res) => {
-            setComment();
-            setProgress(100);
-        }).catch((err) => {
-            console.log(err);
-            setProgress(100);
-        });
-    }
-
-    const DeletePost = async (id) => {
-        setProgress(50);
-        await deletePost({ id, jwt, userId }).unwrap().then((res) => {
-            console.log(res);
-            setProgress(100);
-            navigate("/profile");
-        }).catch((err) => {
-            console.log(err);
-            setProgress(100);
-        })
-    }
-
 
     useEffect(() => {
+        const getPostCreator = async (id) => {
+            await getPostUser(post.createdBy).unwrap().then((res) => {
+                setCreator(res);
+            }).catch((err) => {
+                console.log(err);
+            })
+        };
+    
+        const handleLikes = async (id) => {
+            setProgress(50);
+            await likePost({ id, jwt }).unwrap().then((res) => {
+                setProgress(100);
+                console.log(res);
+            }).catch((err) => {
+                setProgress(100);
+                console.log(err);
+            })
+        }
+    
+        const handleSave = async (id) => {
+            setProgress(50);
+            await savePost({ id, jwt }).unwrap().then((res) => {
+                setProgress(100);
+            }).catch((err) => {
+                console.log(err);
+                setProgress(100);
+            });
+        }
+    
+        const handleComment = async () => {
+            const data = {
+                caption: comment,
+                postId: post._id,
+            };
+            setProgress(50);
+            await createComment({ data, jwt, postId: post._id }).unwrap().then((res) => {
+                setComment();
+                setProgress(100);
+            }).catch((err) => {
+                console.log(err);
+                setProgress(100);
+            });
+        }
+    
+        const DeletePost = async (id) => {
+            setProgress(50);
+            await deletePost({ id, jwt, userId }).unwrap().then((res) => {
+                console.log(res);
+                setProgress(100);
+                navigate("/profile");
+            }).catch((err) => {
+                console.log(err);
+                setProgress(100);
+            })
+        }
         if(post){
             if(!creator){
                 getPostCreator(post.createdBy);

@@ -1,5 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react"
 import { axiosBaseQuery } from "../customeBaseQuery/axiosBaseQuery";
+import { UsersApi } from "./UsersApi";
 
 const PostsApi = createApi({
     reducerPath: "Posts",
@@ -20,6 +21,28 @@ const PostsApi = createApi({
                         data
                     }
                 }
+            }),
+            updateSavePost: builders.mutation({
+                invalidatesTags: (res, err, data) => [{ type: "Posts" }, { type: "SinglePost", id: data.id }],
+                query: ({ id, jwt }) => {
+                    return {
+                        url: `/secure/save/${id}`,
+                        method: "PUT",
+                        headers: {
+                            Authorization: `Bearer ${jwt}`,
+                        }
+                    }
+                },
+                async onQueryStarted(
+                    arg,
+                    {
+                    dispatch,
+                    queryFulfilled,
+                    }
+                ) {
+                    await queryFulfilled;
+                    dispatch(UsersApi.util.invalidateTags([{ type: "User", jwt: arg.jwt}]));
+                },
             }),
             getAllPosts: builders.query({
                 providesTags: (res, err, data) => [{ type: "Posts" }],
@@ -89,5 +112,5 @@ const PostsApi = createApi({
     }
 });
 
-export const { useCreatePostMutation, useGetAllPostsQuery, useGetUserPostsQuery, useDeleteSinglePostMutation, useGetSinglePostQuery, useUpdateLikesMutation, useUpdateSinglePostMutation } = PostsApi;
+export const { useCreatePostMutation, useGetAllPostsQuery, useGetUserPostsQuery, useUpdateSavePostMutation, useDeleteSinglePostMutation, useGetSinglePostQuery, useUpdateLikesMutation, useUpdateSinglePostMutation } = PostsApi;
 export { PostsApi };

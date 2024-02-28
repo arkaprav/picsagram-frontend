@@ -33,18 +33,6 @@ const UsersApi = createApi({
                     }
                 }
             }),
-            updateSavePost: builders.mutation({
-                invalidatesTags: (res, err, data) => [{ type: "Users" }, { type: "User", jwt: data.jwt }, { type: "Posts" }, { type: "SinglePost", id: data.id }],
-                query: ({ id, jwt }) => {
-                    return {
-                        url: `/secure/save/${id}`,
-                        method: "PUT",
-                        headers: {
-                            Authorization: `Bearer ${jwt}`,
-                        }
-                    }
-                }
-            }),
             getSingleUser: builders.mutation({
                 providesTags: (res, err, id) => [{ type: "SingleUser", id }],
                 query: (id) => {
@@ -58,5 +46,5 @@ const UsersApi = createApi({
     }
 });
 
-export const { useGetCurrentUserQuery, useUpdateUserMutation, useGetSingleUserMutation, useUpdateSavePostMutation } = UsersApi;
+export const { useGetCurrentUserQuery, useUpdateUserMutation, useGetSingleUserMutation } = UsersApi;
 export { UsersApi };

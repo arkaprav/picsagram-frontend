@@ -14,29 +14,30 @@ const Comments = ({ postId, setProgress }) => {
     const [updateLike, updateResults] = useUpdateLikeCommentMutation();
     const [deleteComment, deleteResults] = useDeleteCommentMutation();
 
-    const handleDelete = async (id) => {
-        setProgress(50);
-        await deleteComment({ id, jwt, postId }).unwrap().then((re) => {
-            setProgress(100);
-            console.log(re);
-        }).catch((Err) => {
-            setProgress(100);
-            console.log(Err);
-        });
-    }
-
-    const handleLike = async (id) => {
-        setProgress(50);
-        await updateLike({ id, jwt, postId }).unwrap().then((re) => {
-            setProgress(100);
-            window.location.reload();
-        }).catch((Err) => {
-            setProgress(100);
-            console.log(Err);
-        });
-    }
+    
 
     useEffect(() => {
+        const handleDelete = async (id) => {
+            setProgress(50);
+            await deleteComment({ id, jwt, postId }).unwrap().then((re) => {
+                setProgress(100);
+                console.log(re);
+            }).catch((Err) => {
+                setProgress(100);
+                console.log(Err);
+            });
+        }
+    
+        const handleLike = async (id) => {
+            setProgress(50);
+            await updateLike({ id, jwt, postId }).unwrap().then((re) => {
+                setProgress(100);
+            }).catch((Err) => {
+                setProgress(100);
+                console.log(Err);
+            });
+        }
+
         if(allComments){
             if(allComments.length !== 0){
                 console.log(allComments);
