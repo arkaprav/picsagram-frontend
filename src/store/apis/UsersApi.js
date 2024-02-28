@@ -42,9 +42,18 @@ const UsersApi = createApi({
                     }
                 }
             }),
+            getAllUsers: builders.query({
+                providesTags: (res, err, data) => [{ type: "Users" }],
+                query: () => {
+                    return {
+                        url: "/all",
+                        method: "GET"
+                    }
+                }
+            })
         }
     }
 });
 
-export const { useGetCurrentUserQuery, useUpdateUserMutation, useGetSingleUserMutation } = UsersApi;
+export const { useGetCurrentUserQuery, useUpdateUserMutation, useGetSingleUserMutation, useGetAllUsersQuery } = UsersApi;
 export { UsersApi };

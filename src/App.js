@@ -13,6 +13,12 @@ import SinglePostPage from './pages/SinglePostPage';
 import Posts from './pages/Posts';
 import UserPosts from './pages/UserPosts';
 import UserSaved from './pages/UserSaved';
+import Message from './pages/Message';
+import Search from './pages/Search';
+import SingleUserProfile from './pages/SingleusersProfile';
+import UsersSinglePosts from './pages/UsersSinglePosts';
+import SingleUsersSavedposts from './pages/SingleUsersSavedposts';
+import SingleUsersPosts from './pages/SingleUsersPosts';
 
 function App() {
   const [progress, setProgress] = useState(0);
@@ -27,13 +33,17 @@ function App() {
       <CustomeRoutes setProgress={setProgress}>
         <Route path='/' element={<MenuBar setProgress={setProgress} />}>
           <Route index element={<Posts setProgress={setProgress} />} />
-          <Route path='search' element={<div>Search...</div>} />
-          <Route path='message' element={<div>Message...</div>} />
+          <Route path='search' element={<Search />} />
+          <Route path='message' element={<Message setProgress={setProgress} />} />
           <Route path='login' element={<LogIn setProgress={setProgress} />} />
           <Route path='signup' element={<SignUp setProgress={setProgress} />} />
           <Route path='profile' element={<Profile />}>
             <Route index element={<UserPosts />} />
             <Route path='saved' element={<UserSaved />} />
+          </Route>
+          <Route path='single-user/:id/profile' element={<SingleUserProfile setProgress={setProgress} />}>
+            <Route index element={<SingleUsersPosts setProgress={setProgress} />} />
+            <Route path="saved" element={<SingleUsersSavedposts setProgress={setProgress} />} />
           </Route>
           <Route path='create-post' element={<CreatePost setProgress={setProgress} />} />
           <Route path='edit-profile' element={<EditProfile setProgress={setProgress} /> } />

@@ -78,8 +78,8 @@
     flex-direction: row;
     gap: 10px;
     padding: 10px;
-    margin-left: 100px;
     cursor: pointer;
+    align-items: center;
 }
 
 .profile a {
@@ -592,6 +592,7 @@ a {
 
 .profile .username {
     font-size: 22px;
+    color: #000;
 }
 
 .caption{
@@ -970,7 +971,7 @@ a {
     font-size: 13px;
 }
 
-.single-comment p button {
+.single-comment p button , .search button{
     background-image: linear-gradient(to right, #acacac, #000);
     color: #fff;
     font-size: 12px;
@@ -982,6 +983,52 @@ a {
 
 .single-comment p svg {
     cursor: pointer;
+}
+
+.page{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.page .search {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: calc(100% - 700px);
+}
+
+.search button {
+    height: fit-content;
+    font-size: 18px;
+    padding: 8px 12px;
+    border-radius: 20px;
+}
+
+.page .search input{
+    flex: 1;
+    font-size: 18px;
+    padding: 8px 15px;
+    border: 1px solid #acacac;
+    border-radius: 20px;
+}
+
+.page .users {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: calc(100% - 700px);
+    justify-content: flex-start;
+}
+
+.page .users .profile {
+    margin-left: 0px;
+}
+
+.page .users .user-skeleton {
+    margin: 5px 0px;
 }
 
 @media screen and (max-width: 480px) {
