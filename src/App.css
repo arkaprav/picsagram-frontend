@@ -13,6 +13,10 @@
     margin: 0px;
 }
 
+.edit, .create{
+    cursor: pointer;
+}
+
 .top-menu-bar{
     position: absolute;
     top: 0px;
@@ -140,7 +144,7 @@
 }
 
 .menu-items a svg path{
-    fill: #000;
+    color: #000;
 }
 
 .auth {

@@ -34,7 +34,7 @@ const UsersApi = createApi({
                 }
             }),
             getSingleUser: builders.mutation({
-                providesTags: (res, err, id) => [{ type: "SingleUser", id }],
+                providesTags: (res, err, data) => [{ type: "SingleUser", id: data }],
                 query: (id) => {
                     return {
                         url: `/${id}`,
@@ -50,10 +50,34 @@ const UsersApi = createApi({
                         method: "GET"
                     }
                 }
-            })
+            }),
+            followUser: builders.mutation({
+                invalidatesTags: (req, err, data) => [{ type: "SingleUser", id: data.id }, { type: "Users" }, { type: "User", jwt: data.jwt }],
+                query: ({ jwt, id }) => {
+                    return {
+                        url: `/secure/follow/${id}`,
+                        method: "PUT",
+                        headers: {
+                            Authorization: `Bearer ${jwt}`
+                        }
+                    }
+                }
+            }),
+            unFollowUser: builders.mutation({
+                invalidatesTags: (req, err, data) => [{ type: "SingleUser", id: data.id }, { type: "Users" }, { type: "User", jwt: data.jwt }],
+                query: ({ jwt, id }) => {
+                    return {
+                        url: `/secure/follow/${id}`,
+                        method: "DELETE",
+                        headers: {
+                            Authorization: `Bearer ${jwt}`
+                        }
+                    }
+                }
+            }),
         }
     }
 });
 
-export const { useGetCurrentUserQuery, useUpdateUserMutation, useGetSingleUserMutation, useGetAllUsersQuery } = UsersApi;
+export const { useGetCurrentUserQuery, useUpdateUserMutation, useGetSingleUserMutation, useGetAllUsersQuery, useFollowUserMutation, useUnFollowUserMutation } = UsersApi;
 export { UsersApi };

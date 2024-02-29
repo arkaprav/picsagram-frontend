@@ -6,6 +6,7 @@ import { FaSearch } from "react-icons/fa";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { delCookie, getCookie } from '../helpers/cookies';
 import { useGetCurrentUserQuery } from '../store';
+import { MdLibraryAdd } from "react-icons/md";
 
 
 const MenuBar = ({ setProgress }) => {
@@ -68,6 +69,11 @@ const MenuBar = ({ setProgress }) => {
                     <NavLink to="/search">
                         <FaSearch />
                     </NavLink>
+                    {jwt &&  (
+                        <NavLink to='/create-post'>
+                            <MdLibraryAdd />
+                        </NavLink>
+                    )}
                 </div>
                 {jwt ? (
                     <div className='profile'>
