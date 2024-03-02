@@ -13,12 +13,11 @@ import SinglePostPage from './pages/SinglePostPage';
 import Posts from './pages/Posts';
 import UserPosts from './pages/UserPosts';
 import UserSaved from './pages/UserSaved';
-import Message from './pages/Message';
 import Search from './pages/Search';
 import SingleUserProfile from './pages/SingleusersProfile';
-import UsersSinglePosts from './pages/UsersSinglePosts';
 import SingleUsersSavedposts from './pages/SingleUsersSavedposts';
 import SingleUsersPosts from './pages/SingleUsersPosts';
+import Reels from './pages/Reels';
 
 function App() {
   const [progress, setProgress] = useState(0);
@@ -34,7 +33,7 @@ function App() {
         <Route path='/' element={<MenuBar setProgress={setProgress} />}>
           <Route index element={<Posts setProgress={setProgress} />} />
           <Route path='search' element={<Search />} />
-          <Route path='message' element={<Message setProgress={setProgress} />} />
+          <Route path='reels' element={<Reels setProgress={setProgress} />} />
           <Route path='login' element={<LogIn setProgress={setProgress} />} />
           <Route path='signup' element={<SignUp setProgress={setProgress} />} />
           <Route path='profile' element={<Profile />}>

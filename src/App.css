@@ -21,7 +21,7 @@
     position: absolute;
     top: 0px;
     left: 0px;
-    width: calc(100vw - 65px);
+    width: calc(100vw - 80px);
     margin: 0px;
     background-color: #fff;
     padding: 5px 20px;
@@ -751,7 +751,7 @@ a {
 }
 
 .all-posts .single-post-col .single-post img {
-    width: 240px;
+    width: 262px;
     border-radius: 30px;
 }
 
