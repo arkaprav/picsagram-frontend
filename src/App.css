@@ -18,7 +18,7 @@
 }
 
 .top-menu-bar{
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
     width: calc(100vw - 80px);
@@ -33,7 +33,7 @@
 
 .hiding {
     display: none;
-    position: fixed;
+    position: sticky;
     bottom: 0px;
     left: 0px;
     flex-direction: row;

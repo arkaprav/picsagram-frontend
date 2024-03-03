@@ -110,6 +110,11 @@ const MenuBar = ({ setProgress }) => {
                 <NavLink to="/search">
                     <FaSearch />
                 </NavLink>
+                {jwt && (
+                    <NavLink to='/create-post'>
+                        <MdLibraryAdd />
+                    </NavLink>
+                )}
             </div>
         </div>
     )
