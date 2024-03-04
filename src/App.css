@@ -554,6 +554,14 @@ a {
     margin: -3px;
 }
 
+.create-post .photo video{
+    object-fit: fill;
+    position: relative;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    margin: -3px;
+}
+
 .create-post .post-details {
     display: flex;
     flex-direction: column;
