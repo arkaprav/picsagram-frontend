@@ -758,9 +758,11 @@ a {
     width: fit-content;
 }
 
-.all-posts .single-post-col .single-post img {
+.all-posts .single-post-col .single-post img,
+.all-posts .single-post-col .single-post video  {
     width: 262px;
     border-radius: 30px;
+    cursor: pointer;
 }
 
 .all-posts .single-post-col .single-post p {
