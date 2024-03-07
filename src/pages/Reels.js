@@ -36,14 +36,25 @@ const Reels = () => {
               string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
           }
           let mute=true;
+          let play = true;
           return <>
               <div className='single-post'>
                   <video
                     loop
                     muted={mute}
-                    onMouseEnter={(e) => e.target.play()}
-                    onMouseLeave={(e) => e.target.pause()}
-                    onFocus={(e) => e.target.play()}
+                    onMouseEnter={(e) => {e.target.play(); play = true;}}
+                    onMouseLeave={(e) => {e.target.pause(); play = false;}}
+                    onFocus={(e) => {e.target.play(); play = true;}}
+                    onClick={(e) => {
+                        if(play === true){
+                            e.target.pause();
+                            play = false;
+                        }
+                        else {
+                            e.target.play();
+                            play = true;
+                        }
+                    }}
                   >
                     <source src={c.video} type='video/mp4' width="100%" height="100%" />
                   </video>
