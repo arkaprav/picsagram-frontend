@@ -69,7 +69,15 @@ const Reels = ({ setProgress }) => {
                             play = true;
                         }
                     }}
-                    onDoubleClick={() => updateLike(c._id)}
+                    onDoubleClick={(e) => {
+                        updateLike(c._id);
+                        if(play === true){
+                            e.target.play();
+                        }
+                        else {
+                            e.target.pause();
+                        }
+                    }}
                   >
                     <source src={c.video} type='video/mp4' width="100%" height="100%" />
                   </video>
@@ -118,7 +126,16 @@ const Reels = ({ setProgress }) => {
                             play = true;
                         }
                     }}
-                    onDoubleClick={() => updateLike(c._id)}
+                   
+                    onDoubleClick={(e) => {
+                        updateLike(c._id);
+                        if(play === true){
+                            e.target.play();
+                        }
+                        else {
+                            e.target.pause();
+                        }
+                    }}
                   >
                     <source src={c.video} type='video/mp4' width="100%" height="100%" />
                   </video>
@@ -168,7 +185,16 @@ const Reels = ({ setProgress }) => {
                             play = true;
                         }
                     }}
-                    onDoubleClick={() => updateLike(c._id)}
+                   
+                    onDoubleClick={(e) => {
+                        updateLike(c._id);
+                        if(play === true){
+                            e.target.play();
+                        }
+                        else {
+                            e.target.pause();
+                        }
+                    }}
                   >
                     <source src={c.video} type='video/mp4' width="100%" height="100%" />
                   </video>
@@ -218,7 +244,16 @@ const Reels = ({ setProgress }) => {
                             play = true;
                         }
                     }}
-                    onDoubleClick={() => updateLike(c._id)}
+                   
+                    onDoubleClick={(e) => {
+                        updateLike(c._id);
+                        if(play === true){
+                            e.target.play();
+                        }
+                        else {
+                            e.target.pause();
+                        }
+                    }}
                   >
                     <source src={c.video} type='video/mp4' width="100%" height="100%" />
                   </video>
