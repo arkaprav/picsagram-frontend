@@ -1,16 +1,33 @@
 import React, { useEffect, useState } from 'react'
-import { useGetAllPostsQuery } from '../store'
-import { NavLink } from 'react-router-dom';
+import { useGetAllPostsQuery, useUpdateLikesMutation } from '../store'
+import { div, useNavigate } from 'react-router-dom';
 import PostProfile from './PostProfile';
 import { GoSync } from 'react-icons/go';
+import { getCookie } from '../helpers/cookies';
+import Button from '../components/Button';
+import { FaRegComment, FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa';
 
-const Posts = () => {
+const Posts = ({ setProgress }) => {
     const { data: posts, isFetching } = useGetAllPostsQuery();
     const [content1, setContent1] = useState();
     const [content2, setContent2] = useState();
     const [content3, setContent3] = useState();
     const [content4, setContent4] = useState();
     const [fetching, setFetching] = useState();
+    const [postLike, likeResults] = useUpdateLikesMutation();
+    const jwt = getCookie("picsaJWT");
+    const userId = getCookie("picsaUserId");
+    const navigate = useNavigate();
+
+    const updateLike = async (id) => {
+        setProgress(50);
+        await postLike({ id, jwt }).unwrap().then((res) => {
+            console.log(res);
+            setProgress(100);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
 
     useEffect(() => {
         if(posts) {
@@ -36,9 +53,21 @@ const Posts = () => {
                 else {
                     string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
                 }
-                return <NavLink to={`post/${c._id}`}>
+                return <div >
                     <div className='single-post'>
-                        <img src={c.image} alt={c.caption} />
+                        <img 
+                            src={c.image} 
+                            alt={c.caption}
+                            onDoubleClick={() => updateLike(c._id)}
+                        />
+                        <div className='post-buttons'>
+                          <Button loading={likeResults.isLoading} onClick={() => updateLike(c._id)}>
+                              {JSON.parse(c.likes).includes(userId) ? <FaThumbsUp /> : <FaRegThumbsUp />}
+                          </Button>
+                          <Button onClick={() => navigate(`post/${c._id}`)}>
+                              <FaRegComment />
+                          </Button>
+                        </div>
                         <PostProfile id={c.createdBy} />
                         <p>
                             <div>
@@ -49,7 +78,7 @@ const Posts = () => {
                             </div>
                         </p>
                     </div>
-                </NavLink>
+                </div>
             }));
             setContent2(c2.map((c) => {
                 const today = new Date();
@@ -61,9 +90,21 @@ const Posts = () => {
                 else {
                     string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
                 }
-                return <NavLink to={`post/${c._id}`}>
+                return <div >
                     <div className='single-post'>
-                        <img src={c.image} alt={c.caption} />
+                        <img  
+                            src={c.image} 
+                            alt={c.caption}
+                            onDoubleClick={() => updateLike(c._id)}
+                        />
+                        <div className='post-buttons'>
+                          <Button loading={likeResults.isLoading} onClick={() => updateLike(c._id)}>
+                              {JSON.parse(c.likes).includes(userId) ? <FaThumbsUp /> : <FaRegThumbsUp />}
+                          </Button>
+                          <Button onClick={() => navigate(`post/${c._id}`)}>
+                              <FaRegComment />
+                          </Button>
+                        </div>  
                         <PostProfile id={c.createdBy} />
                         <p>
                             <div>
@@ -74,7 +115,7 @@ const Posts = () => {
                             </div>
                         </p>
                     </div>
-                </NavLink>
+                </div>
             }));
             setContent3(c3.map((c) => {
                 const today = new Date();
@@ -86,9 +127,21 @@ const Posts = () => {
                 else {
                     string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
                 }
-                return <NavLink to={`post/${c._id}`}>
+                return <div >
                     <div className='single-post'>
-                        <img src={c.image} alt={c.caption} />
+                        <img  
+                            src={c.image} 
+                            alt={c.caption}
+                            onDoubleClick={() => updateLike(c._id)}
+                        />
+                        <div className='post-buttons'>
+                          <Button loading={likeResults.isLoading} onClick={() => updateLike(c._id)}>
+                              {JSON.parse(c.likes).includes(userId) ? <FaThumbsUp /> : <FaRegThumbsUp />}
+                          </Button>
+                          <Button onClick={() => navigate(`post/${c._id}`)}>
+                              <FaRegComment />
+                          </Button>
+                        </div>  
                         <PostProfile id={c.createdBy} />
                         <p>
                             <div>
@@ -99,7 +152,7 @@ const Posts = () => {
                             </div>
                         </p>
                     </div>
-                </NavLink>
+                </div>
             }));
             setContent4(c4.map((c) => {
                 const today = new Date();
@@ -111,9 +164,21 @@ const Posts = () => {
                 else {
                     string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
                 }
-                return <NavLink to={`post/${c._id}`}>
+                return <div >
                     <div className='single-post'>
-                        <img src={c.image} alt={c.caption} />
+                        <img  
+                            src={c.image} 
+                            alt={c.caption}
+                            onDoubleClick={() => updateLike(c._id)}
+                        />
+                        <div className='post-buttons'>
+                          <Button loading={likeResults.isLoading} onClick={() => updateLike(c._id)}>
+                              {JSON.parse(c.likes).includes(userId) ? <FaThumbsUp /> : <FaRegThumbsUp />}
+                          </Button>
+                          <Button onClick={() => navigate(`post/${c._id}`)}>
+                              <FaRegComment />
+                          </Button>
+                        </div>  
                         <PostProfile id={c.createdBy} />
                         <p>
                             <div>
@@ -124,7 +189,7 @@ const Posts = () => {
                             </div>
                         </p>
                     </div>
-                </NavLink>
+                </div>
             }));
             setFetching();
         }
@@ -135,6 +200,10 @@ const Posts = () => {
                     <div className='cap'>Loading Posts ...</div>
                 </div>
             )
+            setContent1();
+            setContent2();
+            setContent3();
+            setContent4();
         }
     }, [posts, isFetching]);
 

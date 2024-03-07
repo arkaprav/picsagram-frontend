@@ -1,15 +1,31 @@
 import React, { useEffect, useState } from 'react'
-import { useGetAllReelsQuery } from '../store'
+import { useGetAllReelsQuery, useUpdateLikesReelsMutation } from '../store'
 import { GoSync } from 'react-icons/go';
 import PostProfile from './PostProfile';
+import { getCookie } from '../helpers/cookies';
+import Button from '../components/Button';
+import { FaRegThumbsUp, FaThumbsUp } from 'react-icons/fa';
 
-const Reels = () => {
+const Reels = ({ setProgress }) => {
+    const jwt = getCookie("picsaJWT");
+    const userId = getCookie("picsaUserId");
   const { data: reels, isFetching } = useGetAllReelsQuery();
   const [content1, setContent1] = useState();
   const [content2, setContent2] = useState();
   const [content3, setContent3] = useState();
   const [content4, setContent4] = useState();
   const [fetching, setFetching] = useState();
+  const [reelLikes, likeResuts] = useUpdateLikesReelsMutation();
+
+  const updateLike = async (id) => {
+    setProgress(50);
+    await reelLikes({ id, jwt }).unwrap().then((res) => {
+        console.log(res);
+        setProgress(100);
+    }).catch((err) => {
+        console.log(err);
+    });
+  }
   
   useEffect(() => {
     if(reels) {
@@ -53,9 +69,15 @@ const Reels = () => {
                             play = true;
                         }
                     }}
+                    onDoubleClick={() => updateLike(c._id)}
                   >
                     <source src={c.video} type='video/mp4' width="100%" height="100%" />
                   </video>
+                  <div className='post-buttons'>
+                    <Button loading={likeResuts.isLoading} onClick={() => updateLike(c._id)}>
+                        {JSON.parse(c.likes).includes(userId) ? <FaThumbsUp /> : <FaRegThumbsUp />}
+                    </Button>
+                  </div>
                   <PostProfile id={c.createdBy} />
                   <p>
                       <div>
@@ -86,7 +108,7 @@ const Reels = () => {
                     onMouseEnter={(e) => {e.target.play(); play = true;}}
                     onMouseLeave={(e) => {e.target.pause(); play = false;}}
                     onFocus={(e) => {e.target.play(); play = true;}}
-                    onClick={(e) => {
+                     onClick={(e) => {
                         if(play === true){
                             e.target.pause();
                             play = false;
@@ -96,9 +118,15 @@ const Reels = () => {
                             play = true;
                         }
                     }}
+                    onDoubleClick={() => updateLike(c._id)}
                   >
                     <source src={c.video} type='video/mp4' width="100%" height="100%" />
                   </video>
+                  <div className='post-buttons'>
+                    <Button loading={likeResuts.isLoading} onClick={() => updateLike(c._id)}>
+                        {JSON.parse(c.likes).includes(userId) ? <FaThumbsUp /> : <FaRegThumbsUp />}
+                    </Button>
+                  </div>
                   <PostProfile id={c.createdBy} />
                   <p>
                       <div>
@@ -127,11 +155,10 @@ const Reels = () => {
               <div className='single-post'>
                   <video
                     loop
-                    
                     onMouseEnter={(e) => {e.target.play(); play = true;}}
                     onMouseLeave={(e) => {e.target.pause(); play = false;}}
                     onFocus={(e) => {e.target.play(); play = true;}}
-                    onClick={(e) => {
+                     onClick={(e) => {
                         if(play === true){
                             e.target.pause();
                             play = false;
@@ -141,9 +168,15 @@ const Reels = () => {
                             play = true;
                         }
                     }}
+                    onDoubleClick={() => updateLike(c._id)}
                   >
                     <source src={c.video} type='video/mp4' width="100%" height="100%" />
                   </video>
+                  <div className='post-buttons'>
+                    <Button loading={likeResuts.isLoading} onClick={() => updateLike(c._id)}>
+                        {JSON.parse(c.likes).includes(userId) ? <FaThumbsUp /> : <FaRegThumbsUp />}
+                    </Button>
+                  </div>
                   <PostProfile id={c.createdBy} />
                   <p>
                       <div>
@@ -172,11 +205,10 @@ const Reels = () => {
               <div className='single-post'>
                   <video
                     loop
-                    
                     onMouseEnter={(e) => {e.target.play(); play = true;}}
                     onMouseLeave={(e) => {e.target.pause(); play = false;}}
                     onFocus={(e) => {e.target.play(); play = true;}}
-                    onClick={(e) => {
+                     onClick={(e) => {
                         if(play === true){
                             e.target.pause();
                             play = false;
@@ -186,9 +218,15 @@ const Reels = () => {
                             play = true;
                         }
                     }}
+                    onDoubleClick={() => updateLike(c._id)}
                   >
                     <source src={c.video} type='video/mp4' width="100%" height="100%" />
                   </video>
+                  <div className='post-buttons'>
+                    <Button loading={likeResuts.isLoading} onClick={() => updateLike(c._id)}>
+                        {JSON.parse(c.likes).includes(userId) ? <FaThumbsUp /> : <FaRegThumbsUp />}
+                    </Button>
+                  </div>
                   <PostProfile id={c.createdBy} />
                   <p>
                       <div>
@@ -209,7 +247,11 @@ const Reels = () => {
               <GoSync className='animate-spin' />
               <div className='cap'>Loading reels...</div>
           </div>
-      )
+      );
+      setContent1();
+      setContent2();
+      setContent3();
+      setContent4();
   }
   }, [reels, isFetching]);
   return (

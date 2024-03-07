@@ -152,7 +152,7 @@ const SinglePostPage = ({ setProgress }) => {
                                 </div>
                             )}
                             {creator._id === userId && (
-                                <div className='buttons'>
+                                <div className='post-buttons'>
                                     <Button loading={deleteResults.isLoading} onClick={() => DeletePost(post._id)}>
                                         Delete
                                     </Button>

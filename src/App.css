@@ -781,10 +781,25 @@ iframe {
     align-items: center;
     border-radius: 50%;
 }
+
 .mute svg {
     margin-top: 1px;
 }
 
+.post-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: flex-end;
+    margin: 0px 30px;
+}
+
+.post-buttons button {
+    border: transparent;
+    background-color: transparent;
+    font-size: 18px;
+    cursor: pointer;
+}
 
 .all-posts .single-post-col .single-post p {
     margin-left: 45px;
@@ -837,7 +852,7 @@ iframe {
     justify-content: center;
     align-items: center;
     flex: 1;
-    height: 80vh;
+    min-height: 80vh;
     padding: auto;
 }
 
