@@ -1239,4 +1239,14 @@ iframe {
         justify-content: center;
         width: 60vw;
     }
+    .page {
+        width: 100%;
+    }
+    .page .users,
+    .page .search{
+        width: calc(100% + 70px);
+    }
+    .page .search input {
+        width: 98%;
+    }
 }
