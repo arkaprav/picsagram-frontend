@@ -43,6 +43,7 @@ const Reels = () => {
                     onMouseEnter={(e) => {e.target.play(); play = true;}}
                     onMouseLeave={(e) => {e.target.pause(); play = false;}}
                     onFocus={(e) => {e.target.play(); play = true;}}
+                    playsInline
                     onClick={(e) => {
                         if(play === true){
                             e.target.pause();
