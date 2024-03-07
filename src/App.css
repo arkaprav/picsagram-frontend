@@ -760,10 +760,12 @@ a {
 
 .all-posts .single-post-col .single-post img,
 .all-posts .single-post-col .single-post video  {
-    width: 262px;
+    width: 300px;
     border-radius: 30px;
     cursor: pointer;
+    position: relative;
 }
+
 
 .all-posts .single-post-col .single-post p {
     margin-left: 45px;
