@@ -33,14 +33,14 @@
 
 .hiding {
     display: none;
-    position: sticky;
-    bottom: 0px;
-    left: 0px;
+    position: fixed;
+    bottom: 0%;
+    left: 0%;
     flex-direction: row;
-    justify-content: space-evenly;
-    width: 100vw;
+    justify-content: space-between;
+    width: calc(100vw - 60px);
     background-color: #fff !important;
-    padding: 10px;
+    padding: 10px 30px;
 }
 
 .hiding a {
