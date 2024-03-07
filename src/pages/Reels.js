@@ -35,13 +35,11 @@ const Reels = () => {
           else {
               string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
           }
-          let mute=true;
           let play = true;
           return <>
               <div className='single-post'>
                   <video
                     loop
-                    muted={mute}
                     onMouseEnter={(e) => {e.target.play(); play = true;}}
                     onMouseLeave={(e) => {e.target.pause(); play = false;}}
                     onFocus={(e) => {e.target.play(); play = true;}}
@@ -80,13 +78,11 @@ const Reels = () => {
           else {
               string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
           }
-          let mute=true;
           let play = true;
           return <>
               <div className='single-post'>
                   <video
                     loop
-                    muted={mute}
                     onMouseEnter={(e) => {e.target.play(); play = true;}}
                     onMouseLeave={(e) => {e.target.pause(); play = false;}}
                     onFocus={(e) => {e.target.play(); play = true;}}
@@ -125,13 +121,13 @@ const Reels = () => {
           else {
               string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
           }
-          let mute=true;
+          
           let play = true;
           return <>
               <div className='single-post'>
                   <video
                     loop
-                    muted={mute}
+                    
                     onMouseEnter={(e) => {e.target.play(); play = true;}}
                     onMouseLeave={(e) => {e.target.pause(); play = false;}}
                     onFocus={(e) => {e.target.play(); play = true;}}
@@ -170,13 +166,13 @@ const Reels = () => {
           else {
               string = `${postDate.getDate()}-${postDate.getMonth()}-${postDate.getFullYear()}`
           }
-          let mute=true;
+          
           let play = true;
           return <>
               <div className='single-post'>
                   <video
                     loop
-                    muted={mute}
+                    
                     onMouseEnter={(e) => {e.target.play(); play = true;}}
                     onMouseLeave={(e) => {e.target.pause(); play = false;}}
                     onFocus={(e) => {e.target.play(); play = true;}}

@@ -763,7 +763,26 @@ a {
     width: 300px;
     border-radius: 30px;
     cursor: pointer;
-    position: relative;
+}
+
+iframe {
+    display: none;
+}
+
+.mute {
+    background-color: #454545;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 1px 3px;
+    width: fit-content;
+    height: fit-content;
+    border: 1px solid #454545;
+    align-items: center;
+    border-radius: 50%;
+}
+.mute svg {
+    margin-top: 1px;
 }
 
 
